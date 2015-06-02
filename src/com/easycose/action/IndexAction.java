@@ -1,5 +1,8 @@
 package com.easycose.action;
 
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +10,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import com.easycose.util.Pager;
+import com.easycose.util.Tool;
 
 import net.sf.json.JSONObject;
 
@@ -17,13 +21,15 @@ public class IndexAction extends BaseAction {
 	 */
 	private static final long serialVersionUID = 2572080550725277719L;
 
+	private static final String KEY_MD5 = "1234567890";
+
 	/**
 	 * 
 	 */
 	private String resultJson; // 返回Json
-	
-	private Map<String,String> jsonMap;
-	
+
+	private Map<String, String> jsonMap;
+
 	private String userName;
 	private String password;
 	private String repassword;
@@ -43,18 +49,25 @@ public class IndexAction extends BaseAction {
 	public String login() {
 		return "toLogin";
 	}
+
 	public String register() {
+		String password = "123456";
+		String input=Tool.getMD5(password);
+		System.out.println(input);
 		return "toReg";
 	}
+
 	public String regDo() {
 		msg = "注册成功，正在返回登录界面....";
 		url = "/login";
 		return "regDo";
 	}
+
 	public String loginDo() {
-		//jsonMap="";
+		// jsonMap="";
 		return "json";
 	}
+
 	public String getResultJson() {
 		return resultJson;
 	}
@@ -102,7 +115,7 @@ public class IndexAction extends BaseAction {
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
 	}
-	
+
 	public String getUserName() {
 		return userName;
 	}
@@ -126,7 +139,7 @@ public class IndexAction extends BaseAction {
 	public void setRepassword(String repassword) {
 		this.repassword = repassword;
 	}
-	
+
 	public String getCode() {
 		return code;
 	}
