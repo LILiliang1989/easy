@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+	<constant name="struts.i18n.encoding" value="utf-8"/>
+	<constant name="struts.configuration.xml.reload" value="true" />  
+	<constant name="struts.devMode" value="true" />
+	
+	<package name="default" extends="struts-default,json-default">
+      <!-- 验证码 -->
+	 	<action name="ImageAction_*" class="com.easycose.action.ImageAction" method="{1}">
+	 		<result name="success" type="stream">
+	 			<param name="inputName">imageStream</param>
+	 		</result>
+	 		<result name="checkImage" type="json">
+ 				<param name="root">data</param>
+ 			</result>
+	 	</action>
+	 	 <action name="login" class="com.easycose.action.IndexAction" method="login">  
+            <result name="toLogin">/login.jsp</result> 
+        </action>
+         <action name="reg" class="com.easycose.action.IndexAction" method="register">  
+            <result name="toReg">/register.jsp</result> 
+        </action>
+        <action name="loginDo" class="com.easycose.action.IndexAction" method="loginDo">  
+            <result name="json" type="json">
+              <param name="root">data</param>
+            </result> 
+        </action>
+        <action name="regDo" class="com.easycose.action.IndexAction" method="regDo">  
+            <result name="regDo">info.jsp</result> 
+        </action>
+	</package>
+	<package name="user" namespace="/user/" extends="struts-default,json-default">
+         <action name="logout" class="com.easycose.action.IndexAction" method="logout">  
+            <result name="logout">/index.jsp</result> 
+        </action>
+	</package>
+</struts>

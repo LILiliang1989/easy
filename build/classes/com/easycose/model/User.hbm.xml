@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-1 22:01:42 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.easycose.model.User" table="ec_user">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userName" type="java.lang.String">
+            <column name="account" />
+        </property>
+        <property name="nickName" type="java.lang.String">
+            <column name="nick_name" />
+        </property>
+        <property name="realName" type="java.lang.String">
+            <column name="real_name" />
+        </property>
+        <property name="age" type="java.lang.String">
+            <column name="age" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="sex" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="password" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="email" />
+        </property>
+        <property name="phone" type="java.lang.String">
+            <column name="phone" />
+        </property>
+        <property name="userType" type="java.lang.String">
+            <column name="user_type" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="reg_time" />
+        </property>
+    </class>
+</hibernate-mapping>
